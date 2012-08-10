@@ -17,8 +17,8 @@ development:
   encoding: unicode
   database: mypsql_development
   pool: 5
-  username: mypsql
-  password:
+  username: moredream
+  password: test1234
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -43,13 +43,13 @@ test:
   encoding: unicode
   database: mypsql_test
   pool: 5
-  username: mypsql
-  password:
+  username: moredream
+  password: test1234
 
 production:
   adapter: postgresql
   encoding: unicode
   database: mypsql_production
   pool: 5
-  username: mypsql
-  password:
+  username: moredream
+  password: test1234
