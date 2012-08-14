@@ -1,7 +1,5 @@
 Mypsql::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-ENV['FACEBOOK_APP_ID'] = "387404467992646"
-ENV['FACEBOOK_SECRET'] ="d8f8ccf870edb9b37a882178e59ee5cd"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
