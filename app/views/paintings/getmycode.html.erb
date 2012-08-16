@@ -1,2 +1,4 @@
-Displaying image <%= @random_image%>
+
+<%= @random_image.name%>
+
 <%=  image_tag @random_image.image_url(:large) if @random_image.image? %>

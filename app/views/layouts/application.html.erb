@@ -22,10 +22,28 @@
         function(response) {
          window.location = "http://localhost:3000/getmycode";
         }
-
     )
-
   };
+
+
+      function postToFeed() {
+
+        // calling the API ...
+        var obj = {
+          method: 'stream.publish',
+          link: 'http://sheltered-wildwood-4199.herokuapp.com/',
+          picture: '',
+          name: 'Facebook Dialogs',
+          caption: 'Reference Documentation',
+          description: 'Using Dialogs to interact with users.'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj, callback);
+      }
 
   // Load the SDK Asynchronously
   (function(d){
@@ -40,8 +58,10 @@
 <div id="container">
 
 <fb:like href="https://www.facebook.com/pages/MyCode/181525571977095/" send="true" width="450" show_faces="true"></fb:like>
-<div class="fb-comments" data-href="https://www.facebook.com/pages/MyCode/181525571977095" data-num-posts="10" data-width="470"></div>
+<p><button onclick='postToFeed(); return false;'>Post to Feed</button></p>
+<p id='msg'></p>
 <%= yield %>
+<div class="fb-comments" data-href="https://www.facebook.com/pages/MyCode/181525571977095" data-num-posts="10" data-width="600"></div>
 </div>
 </body>
 </html>
