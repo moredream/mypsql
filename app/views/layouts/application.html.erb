@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-    <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tag %>
-    <%= yield(:head) %>
+<title>ColorCode</title>
+<%= stylesheet_link_tag "application" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tag %>
 </head>
 <body>
+<div id="fb-root"></div>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -20,7 +20,7 @@
     // Additional initialization code here
     FB.Event.subscribe('edge.create',
         function(response) {
-         window.location ="http://sheltered-wildwood-4199.herokuapp.com/getmycode";
+         window.location = "http://localhost:3000/getmycode";
         }
 
     )
@@ -37,24 +37,11 @@
    }(document));
 
 </script>
-
-
 <div id="container">
-<fb:like href="https://www.facebook.com/pages/MyCode/181525571977095" send="false" width="450" show_faces="false"></fb:like>
 
-<div id="user_nav">
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
-            <%= yield %>
+<fb:like href="https://www.facebook.com/pages/MyCode/181525571977095/" send="true" width="450" show_faces="true"></fb:like>
+<div class="fb-comments" data-href="https://www.facebook.com/pages/MyCode/181525571977095" data-num-posts="10" data-width="470"></div>
+<%= yield %>
 </div>
 </body>
 </html>
