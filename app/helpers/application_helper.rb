@@ -1,5 +1,5 @@
 module ApplicationHelper
-	  def title(page_title, show_title = true)
+  def title(page_title, show_title = true)
     content_for(:title) { h(page_title.to_s) }
     @show_title = show_title
   end
@@ -15,4 +15,5 @@ module ApplicationHelper
   def javascript(*args)
     content_for(:head) { javascript_include_tag(*args) }
   end
+
 end

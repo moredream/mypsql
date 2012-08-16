@@ -3,7 +3,9 @@ Mypsql::Application.routes.draw do
   get "home/index"
 
   resources :galleries
-  resources :paintings
+  resources :paintings 
+  
+  match 'getmycode', to: 'paintings#getmycode'
 
 
   match 'auth/:provider/callback', to: 'sessions#create'

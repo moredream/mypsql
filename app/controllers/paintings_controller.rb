@@ -15,10 +15,16 @@ class PaintingsController < ApplicationController
 
   def edit
     @painting = Painting.find(params[:id])
+
   end
+
+def getmycode
+    @random_image = Painting.first(:order => "RANDOM()")
+end
 
   def show
     @painting = Painting.find(params[:id])
+
   end
 
   def update
