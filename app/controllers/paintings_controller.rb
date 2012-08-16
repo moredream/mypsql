@@ -17,6 +17,10 @@ class PaintingsController < ApplicationController
     @painting = Painting.find(params[:id])
   end
 
+  def show
+    @painting = Painting.find(params[:id])
+  end
+
   def update
     @painting = Painting.find(params[:id])
     if @painting.update_attributes(params[:painting])
