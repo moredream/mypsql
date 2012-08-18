@@ -2,9 +2,13 @@
 <html>
 <head>
 <title>ColorCode</title>
-<%= stylesheet_link_tag "application" %>
-<%= javascript_include_tag "application" %>
-<%= csrf_meta_tag %>
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <div id="fb-root"></div>
@@ -25,7 +29,6 @@
     )
   };
 
-
   // Load the SDK Asynchronously
   (function(d){
      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -36,12 +39,35 @@
    }(document));
 
 </script>
-<div id="container">
+<div id="container" class="container">
+<div class="row">
+    <div class="span9"> 
+      <div class="hero-unit"><%= yield %></div>
+   </div>
+    <div class="span3"> 
+        <div id="myCarousel" class="carousel slide ">
+        <!-- Carousel items -->
+        <div class="carousel-inner  " >
+    
+          <div class="active item " ><%=  image_tag  "code1.jpg" ,:size => "120x120" %></div>
+          <div class="item "  ><%=  image_tag  "code2.jpg" , :size => "120x120" %></div>
+          <div class="item " ><%=  image_tag  "code3.jpg"  ,:size => "120x120" %></div>
+          <div class="item " ><%=  image_tag  "code4.jpg"   ,:size => "120x120" %></div>        </div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div>
+        <div>
+          <h2>COLORCODE®</h2>
+          <p>칼라코드란?
+          COLORCODE®는 4가지 색상(빨강, 파랑, 검정, 초록)을 이용한 매트릭스 형태의 코드로, 각종 디지털 정보를 저장하는 새로운 개념의 데이터 표현 기술입니다. 한국 기술로 개발된 칼라코드는 컨텐츠를 보다 빠르고 편리하게 제공하며, 칼라를 활용해 감성적인 브랜드 경험을 극대화 할 수 있는 차세대 마케팅 툴입니다.</p>
+      </div>
+    </div>
+    </div>
+      <div class="fb-comments" data-href="https://www.facebook.com/pages/MyCode/181525571977095" data-num-posts="10" data-width="450">
+    </div>
+  </div>
 
-<fb:like href="https://www.facebook.com/pages/MyCode/181525571977095/" send="true" width="450" show_faces="true"></fb:like>
 
-<%= yield %>
-<div class="fb-comments" data-href="https://www.facebook.com/pages/MyCode/181525571977095" data-num-posts="10" data-width="600"></div>
-</div>
 </body>
 </html>
