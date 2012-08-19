@@ -1,4 +1,5 @@
 class PaintingsController < ApplicationController
+
   def new
     @painting = Painting.new(:gallery_id => params[:gallery_id])
   end
@@ -18,9 +19,22 @@ class PaintingsController < ApplicationController
 
   end
 
-def getmycode
-    @random_image = Painting.first(:order => "RANDOM()")
-end
+  def publish
+
+      @painting = Painting.find(params[:id])
+
+    if current_user
+      current_user.facebook.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
+    end
+
+    redirect_to  home_show_path, notice: "Review has been created."
+
+  end
+
+  def getmycode
+      @random_image = Painting.first(:order => "RANDOM()")
+
+  end
 
   def show
     @painting = Painting.find(params[:id])

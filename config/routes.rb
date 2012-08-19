@@ -1,13 +1,15 @@
 Mypsql::Application.routes.draw do
   
   get "home/index"
-
+  get "home/show"
   resources :galleries
-  resources :paintings 
-  
+
+  resources :paintings do
+   member do
+     get 'publish'
+   end
+  end
   match 'getmycode', to: 'paintings#getmycode'
-
-
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'

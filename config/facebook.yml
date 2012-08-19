@@ -11,3 +11,4 @@ test:
 production:
   app_id: 387404467992646
   secret_key: d8f8ccf870edb9b37a882178e59ee5cd
+

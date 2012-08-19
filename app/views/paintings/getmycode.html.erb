@@ -20,6 +20,10 @@
       };
 </script>
 
+<p>
+  <%= link_to "Post to my wall", publish_painting_path(@random_image), :class => "btn btn-success btn-large" %>
+</p>
+
 <p><button onclick='postToFeed(); return false;'>Post to Feed</button></p>
 <p id='msg'></p>
 <%= @random_image.name%>

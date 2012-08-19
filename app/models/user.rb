@@ -18,7 +18,12 @@ class User < ActiveRecord::Base
     nil # or consider a custom null object
   end
 
-def friends_count
-  facebook { |fb| fb.get_connection("me", "friends").size }
-end
+  def friends_count
+    facebook { |fb| fb.get_connection("me", "friends").size }
+  end
+ 
+  def publish(path_to_mycode)
+   facebook { |fb| fb..put_picture(path_to_mycode) }
+  end
+
 end
