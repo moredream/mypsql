@@ -1,16 +1,31 @@
 <%- model_class = Gallery -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1>
+<%= @gallery.name %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @gallery.name %></dd>
-</dl>
+
+<div id="paintings">
+  <% for painting in @gallery.paintings %>
+    <div class="painting">
+      <%= image_tag painting.image_url(:thumb) if painting.image? %>
+      <div class="name"><%= painting.name %></div>
+      <div class="actions">
+        <%= link_to "edit", edit_painting_path(painting) %> |
+        <%= link_to "remove", painting, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>
+
+  <div class="clear"></div>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               galleries_path, :class => 'btn'  %>
+   <%= link_to t('.Add  Painting', :default => t("helpers.links.Add")),
+   new_painting_path(:gallery_id => @gallery) , :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_gallery_path(@gallery), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
