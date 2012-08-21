@@ -22,14 +22,9 @@ class PaintingsController < ApplicationController
   def publish
 
       @painting = Painting.find(params[:id])
-
-    #  @access_token = @facebook_cookies["access_token"]
-     # @graph = Koala::Facebook::GraphAPI.new(@access_token)
       if current_user
         current_user.facebook.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
       end
-
-      #@graph.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
 
     redirect_to  home_show_path, notice: "Review has been created."
 
