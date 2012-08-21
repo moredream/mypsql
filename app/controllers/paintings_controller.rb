@@ -1,10 +1,5 @@
 class PaintingsController < ApplicationController
-before_filter :parse_facebook_cookies
-def parse_facebook_cookies
-  @facebook_cookies ||= Koala::Facebook::OAuth.new('387404467992646', 'd8f8ccf870edb9b37a882178e59ee5cd').get_user_info_from_cookie(cookies)
-  # If you've setup a configuration file as shown above then you can just do
-  # @facebook_cookies ||= Koala::Facebook::OAuth.new.get_user_info_from_cookie(cookies)
-end
+
   def new
     @painting = Painting.new(:gallery_id => params[:gallery_id])
   end
@@ -34,7 +29,7 @@ end
         current_user.facebook.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
       end
 
-      @graph.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
+      #@graph.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
 
     redirect_to  home_show_path, notice: "Review has been created."
 
