@@ -9,7 +9,7 @@ gem 'pg'
 
 gem 'thin'
 
-gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-facebook'
 gem "rmagick"
 
 gem 'carrierwave'

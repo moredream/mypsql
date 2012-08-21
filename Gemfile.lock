@@ -155,7 +155,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   koala
-  omniauth-facebook (= 1.4.0)
+  omniauth-facebook
   pg
   rails
   rmagick
