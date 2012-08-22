@@ -24,14 +24,15 @@
     // Additional initialization code here
     FB.login(function(response) {
     if (response.authResponse) {
-    alert('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-     alert('Good to see you, ' + response.name + '.');
-    });
+      alert("Welcome");
+      FB.api('/me', function(response) {
+        alert('Good to see you, ' + response.name + '.');
+      });
     } else {
-    alert'User cancelled login or did not fully authorize.');
+      alert('User cancelled login or did not fully authorize.');
     }
     });
+
   };
 
   // Load the SDK Asynchronously
