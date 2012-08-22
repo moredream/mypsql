@@ -1,31 +1,11 @@
-<Script>
-      function postToFeed() {
 
-        // calling the API ...
-        var obj = {
-          method: 'stream.publish',
-          link: 'http://sheltered-wildwood-4199.herokuapp.com/',
-          picture: 'http://sheltered-wildwood-4199.herokuapp.com/<%=@random_image.image_url(:large) %>',
-          source: 'http://sheltered-wildwood-4199.herokuapp.com/<%=@random_image.image_url(:large) %>',
-          name: 'Facebook Dialogs',
-          caption: 'Reference Documentation',
-          description: 'Using Dialogs to interact with users.'
-        };
 
-        function callback(response) {
-          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
-        }
+<h2><%= @random_image.name%></h2>
 
-        FB.ui(obj, callback);
-      };
-</script>
-
-<p>
-  <%= link_to "Post to my wall", publish_painting_path(@random_image), :class => "btn btn-success btn-large" %>
+<p >
+<%=  image_tag @random_image.image_url(:large) if @random_image.image? %>
 </p>
 
-<p><button onclick='postToFeed(); return false;'>Post to Feed</button></p>
-<p id='msg'></p>
-<%= @random_image.name%>
-
-<%=  image_tag @random_image.image_url(:large) if @random_image.image? %>
+<p style="text-align:center">
+  <%= link_to "Post to my wall", publish_painting_path(@random_image), :class => "btn btn-success btn-large" %>
+</p>
