@@ -27,9 +27,15 @@ class PaintingsController < ApplicationController
         graph.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
       end
       
+<<<<<<< HEAD
       # if current_user
       #   current_user.facebook.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
       # end
+=======
+      if current_user
+        current_user.facebook.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
+      end
+>>>>>>> ea96f1bc9799e650e930a5b6d302a459bdd5e9bf
 
     redirect_to  home_show_path, notice: "Review has been created."
 

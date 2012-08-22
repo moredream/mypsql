@@ -9,7 +9,9 @@ gem 'pg'
 
 gem 'thin'
 
+
 gem 'omniauth-facebook',  '1.4.0'
+
 gem "rmagick"
 gem 'fb-channel-file'
 gem 'carrierwave'

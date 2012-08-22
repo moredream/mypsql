@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+=======
+jQuery ->
+  $('body').prepend('<div id="fb-root"></div>')
+
+  $.ajax
+    url: "#{window.location.protocol}//connect.facebook.net/en_US/all.js"
+    dataType: 'script'
+    cache: true
+
+
+
+
+window.fbAsyncInit = ->
+  FB.init(appId: '<%= ENV["FACEBOOK_APP_ID"] %>', cookie: true,  status : true, xfbml:true)
+>>>>>>> ea96f1bc9799e650e930a5b6d302a459bdd5e9bf
 
   $('#sign_in').click (e) ->
     e.preventDefault()
@@ -13,3 +29,7 @@
   if $('#sign_out').length > 0
     FB.getLoginStatus (response) ->
       window.location = $('#sign_out').attr("href") if !response.authResponse
+<<<<<<< HEAD
+=======
+
+>>>>>>> ea96f1bc9799e650e930a5b6d302a459bdd5e9bf
