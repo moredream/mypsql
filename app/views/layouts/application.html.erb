@@ -28,6 +28,7 @@ Signed facebook_cookies in as <strong><%= facebook_cookies %></strong>!
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '387404467992646', // App ID
+           channelUrl : '//'+window.location.hostname+'/channel', // Path to your Channel File
           status     : true, // check login status
           cookie     : true, // enable cookies to allow the server to access the session
           xfbml      : true  // parse XFBML
@@ -37,7 +38,7 @@ Signed facebook_cookies in as <strong><%= facebook_cookies %></strong>!
    // handle the response
  }, {scope: 'email,user_likes'});
 
- 
+
      $(document).ready(function(){
          $("#mycode").click(function(event){
 

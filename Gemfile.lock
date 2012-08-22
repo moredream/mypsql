@@ -48,6 +48,8 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.2)
       multipart-post (~> 1.1)
+    fb-channel-file (0.0.1)
+      rails (>= 3.0)
     hashie (1.2.0)
     hike (1.2.1)
     httpauth (0.1)
@@ -153,6 +155,7 @@ PLATFORMS
 DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
+  fb-channel-file
   jquery-rails
   koala
   omniauth-facebook (= 1.4.0)
