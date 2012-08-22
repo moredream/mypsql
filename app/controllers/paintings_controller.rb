@@ -22,7 +22,17 @@ class PaintingsController < ApplicationController
   def publish
 
       @painting = Painting.find(params[:id])
-      graph = Koala::Facebook::GraphAPI.new(facebook_cookies["access_token"])
+         # begin
+    #   # allow for ?access_token=[TOKEN] for iOS calls.
+    #   @access_token = session[:access_token] || facebook_cookies[:access_token]
+    #   @graph = Koala::Facebook::API.new(@access_token)
+    #   # TODO: move this to session[:current_user]..
+    #   @current_user ||= User.from_graph @graph.get_object('me', { fields: 'id,first_name,last_name,gender,birthday' })
+    # rescue
+    #   nil # not logged in
+    # end
+        graph = Koala::Facebook::API.new(facebook_cookies["access_token"])
+      
       if graph
         graph.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
       end
