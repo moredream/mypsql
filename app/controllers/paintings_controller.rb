@@ -22,10 +22,10 @@ class PaintingsController < ApplicationController
   def publish
 
       @painting = Painting.find(params[:id])
-      graph = Koala::Facebook::GraphAPI.new(facebook_cookies["access_token"])
-      if graph
-        graph.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
-      end
+      # graph = Koala::Facebook::GraphAPI.new(facebook_cookies["access_token"])
+      # if graph
+      #   graph.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
+      # end
       
       if current_user
         current_user.facebook.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
