@@ -1,71 +1,38 @@
 <!DOCTYPE html>
-  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <title>ColorCode</title>
-<!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-  <![endif]-->
+
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>    <div id="fb-root"></div>
-Signed current_userin as <strong><%= current_user %></strong>!
-
-
+<body>    
+<div id="fb-root"></div>
 <script>
-      // Load the SDK Asynchronously 
-      (function(d){
-         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement('script'); js.id = id; js.async = true;
-         js.src = "//connect.facebook.net/en_US/all.js";
-         ref.parentNode.insertBefore(js, ref);
-       }(document));
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '387404467992646', // App ID
+      channelUrl : '//'+window.location.hostname+'/channel.html', // Path to your Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
 
-             // Init the SDK upon load
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '387404467992646', // App ID
-           channelUrl : '//'+window.location.hostname+'/channel.html', // Path to your Channel File
-          status     : true, // check login status
-          cookie     : true, // enable cookies to allow the server to access the session
-          xfbml      : true  // parse XFBML
-        });
- 
-       FB.login(function(response) {
-         // handle the response
-         alert(response);
-       }, {scope: "email,publish_stream"});
+    // Additional initialization code here
+  };
 
-     $(document).ready(function(){
-         $("#mycode").click(function(event){
-
-          event.preventDefault();
-          current_user =  '<%= current_user %>';
-
-          if (current_user.length==''){
-          FB.login(function(response) {
-              if (response.authResponse) {
-              return window.location = '/auth/facebook/callback';
-               } 
-              else {
-               alert('User cancelled login or did not fully authorize.');
-              } 
-            }, {
-            scope: "email,publish_stream"
-            });
-           
-          }else
-          {
-             window.location = "/getmycode";
-          }
-
-       });
-     });
-   </script>
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
 
 <div id="container" class="container">
   <div class="row">
