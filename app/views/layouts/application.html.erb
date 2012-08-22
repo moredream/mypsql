@@ -21,14 +21,17 @@
       xfbml      : true  // parse XFBML
     });
 
+    // Additional initialization code here
     FB.login(function(response) {
-        if (response.authResponse) {
-         //window.location = '/auth/facebook/callback';
-        } else {
-          //User cancelled login or did not fully authorize
-          alert('User cancelled login or did not fully authorize.');
-        }
-        }, {scope: 'email,publish_stream'});
+    if (response.authResponse) {
+      alert("Welcome");
+      FB.api('/me', function(response) {
+        alert('Good to see you, ' + response.name + '.');
+      });
+    } else {
+      alert('User cancelled login or did not fully authorize.');
+    }
+    });
 
   };
 
@@ -41,22 +44,22 @@
      ref.parentNode.insertBefore(js, ref);
    }(document));
 </script>
+
 <div id="container" class="container">
   <div class="row">
       <div class="span12"> 
           <div id="user_nav">
 
             <div id="user_nav">
-
-              <% if facebook_cookies %>
-                Signed in as <strong><%= @profile.name%></strong>!
-
+              <% if current_user %>
+                Signed in as <strong><%= current_user.name %></strong>!
                 <%= link_to "Sign out", signout_path, id: "sign_out" %>
               <% else %>
                 <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
               <% end %>
             </div>
             <p>
+
             <%= link_to "Galleries", galleries_path , :class => "btn btn-info" %> 
             </p>
           </div>

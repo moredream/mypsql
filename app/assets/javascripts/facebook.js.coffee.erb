@@ -2,7 +2,7 @@
   $('#sign_in').click (e) ->
     e.preventDefault()
     FB.login (response) ->
-      window.location = '/getmycode/' if response.authResponse
+      window.location = '/auth/facebook/callback' if response.authResponse
     , scope: "email,publish_stream"
 
   $('#sign_out').click (e) ->
