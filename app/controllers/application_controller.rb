@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 
 private
-<<<<<<< HEAD
+
 def facebook_cookies
 	@facebook_cookies ||= Koala::Facebook::OAuth.new('387404467992646', 'd8f8ccf870edb9b37a882178e59ee5cd').get_user_info_from_cookie(cookies)
 
@@ -12,14 +12,13 @@ def facebook_cookies
 
  end
 helper_method :facebook_cookies
-=======
+
 # def facebook_cookies
 # 	@facebook_cookies ||= Koala::Facebook::OAuth.new('387404467992646', 'd8f8ccf870edb9b37a882178e59ee5cd').get_user_info_from_cookie(cookies)
 # #@facebook_cookies = User.from_omniauth(env["omniauth.auth"]) 
 
 # end
 #helper_method :facebook_cookies
->>>>>>> ea96f1bc9799e650e930a5b6d302a459bdd5e9bf
 
 
   def current_user

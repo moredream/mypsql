@@ -9,7 +9,6 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<<<<<<< HEAD
 <body>    
 <div id="fb-root"></div>
 <script>
@@ -21,6 +20,7 @@
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
     });
+
     FB.login(function(response) {
         if (response.authResponse) {
          //window.location = '/auth/facebook/callback';
@@ -41,60 +41,22 @@
      ref.parentNode.insertBefore(js, ref);
    }(document));
 </script>
-=======
-<body>
-  <script>
-     $(document).ready(function(){
-         $("#mycode").click(function(event){
-
-          event.preventDefault();
-          current_user =  '<%= current_user %>';
-
-          if (current_user.length==''){
-          FB.login(function(response) {
-              if (response.authResponse) {
-              return window.location = '/auth/facebook/callback';
-               } 
-              else {
-               alert('User cancelled login or did not fully authorize.');
-              } 
-            }, {
-            scope: "email,publish_stream"
-            });
-           
-          }else
-          {
-             window.location = "/getmycode";
-          }
-
-       });
-     });
-   </script>
->>>>>>> ea96f1bc9799e650e930a5b6d302a459bdd5e9bf
-
 <div id="container" class="container">
   <div class="row">
       <div class="span12"> 
           <div id="user_nav">
 
             <div id="user_nav">
-<<<<<<< HEAD
+
               <% if facebook_cookies %>
                 Signed in as <strong><%= @profile.name%></strong>!
-=======
-              <% if current_user %>
-                Signed in as <strong><%= current_user.name %></strong>!
->>>>>>> ea96f1bc9799e650e930a5b6d302a459bdd5e9bf
+
                 <%= link_to "Sign out", signout_path, id: "sign_out" %>
               <% else %>
                 <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
               <% end %>
             </div>
             <p>
-<<<<<<< HEAD
-
-=======
->>>>>>> ea96f1bc9799e650e930a5b6d302a459bdd5e9bf
             <%= link_to "Galleries", galleries_path , :class => "btn btn-info" %> 
             </p>
           </div>
