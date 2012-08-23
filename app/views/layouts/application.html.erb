@@ -24,9 +24,11 @@
     // Additional initialization code here
     FB.login(function(response) {
     if (response.authResponse) {
-      FB.api('/me', function(response) {
-        alert('Good to see you, ' + response.name + '.');
-         document.getElementById('msg').innerHTML = "accessToken: " + response['accessToken'];
+      FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+            var accessToken = response.authResponse.accessToken;
+            document.getElementById('msg').innerHTML = "accessToken: " + accessToken;
+         }
       });
     } else {
       alert('User cancelled login or did not fully authorize.');
