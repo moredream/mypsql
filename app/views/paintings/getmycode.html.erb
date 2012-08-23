@@ -1,6 +1,29 @@
+ <script> 
+      function postToFeed() {
 
+        // calling the API ...
+        var obj = {
+          method: 'feed',
+          link: 'http://sheltered-wildwood-4199.herokuapp.com/',
+          picture: 'http://sheltered-wildwood-4199.herokuapp.com/<%=@random_image.image_url(:large) %>',
+          source: 'http://sheltered-wildwood-4199.herokuapp.com/<%=@random_image.image_url(:large) %>',
+          name: 'Get my own Code with COLORCODE',
+          caption: 'Reference Documentation',
+          description: 'Using Dialogs to interact with users.'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj, callback);
+      }
+    
+ </script>
 
 <h2><%= @random_image.name%></h2>
+<p><a onclick='postToFeed(); return false;'>Post to Feed</a></p>
+    <p id='msg'></p>
 
 <p >
 <%=  image_tag @random_image.image_url(:large) if @random_image.image? %>

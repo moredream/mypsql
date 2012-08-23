@@ -22,6 +22,7 @@
     });
 
     // Additional initialization code here
+<<<<<<< HEAD
     FB.login(function(response) {
     if (response.authResponse) {
       alert("Welcome");
@@ -32,6 +33,9 @@
       alert('User cancelled login or did not fully authorize.');
     }
     });
+=======
+
+>>>>>>> 771abdaf0a00c50164686f97ef2a9fc046d9c039
 
   };
 
@@ -44,13 +48,43 @@
      ref.parentNode.insertBefore(js, ref);
    }(document));
 </script>
+<<<<<<< HEAD
 
+=======
+ <script> 
+      function GetMyCode() {
+
+      FB.login(function(response) {
+        if (response.authResponse) {
+          FB.getLoginStatus(function(response) {
+              if (response.status === 'connected') {
+                var accessToken = response.authResponse.accessToken;
+                document.getElementById('msg').innerHTML = "accessToken: " + accessToken;
+             }
+          });
+        } else {
+          alert('User cancelled login or did not fully authorize.');
+        }
+      }, {
+        scope: "email,publish_stream"
+      });
+
+
+      }
+    
+ </script>
+    <p id='msg'></p>
+>>>>>>> 771abdaf0a00c50164686f97ef2a9fc046d9c039
 <div id="container" class="container">
   <div class="row">
       <div class="span12"> 
           <div id="user_nav">
 
             <div id="user_nav">
+<<<<<<< HEAD
+=======
+              <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
+>>>>>>> 771abdaf0a00c50164686f97ef2a9fc046d9c039
               <% if current_user %>
                 Signed in as <strong><%= current_user.name %></strong>!
                 <%= link_to "Sign out", signout_path, id: "sign_out" %>
@@ -59,13 +93,17 @@
               <% end %>
             </div>
             <p>
+<<<<<<< HEAD
 
             <%= link_to "Galleries", galleries_path , :class => "btn btn-info" %> 
             </p>
+=======
+>>>>>>> 771abdaf0a00c50164686f97ef2a9fc046d9c039
           </div>
+         
           <div class="hero-unit"><%= yield %></div>
       </div>
-
+    
   </div>
   <div class="row">
     <div class="span12">

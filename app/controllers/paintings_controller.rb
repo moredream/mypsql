@@ -31,7 +31,13 @@ class PaintingsController < ApplicationController
     # rescue
     #   nil # not logged in
     # end
+<<<<<<< HEAD
         graph = Koala::Facebook::API.new(facebook_cookies["access_token"])
+=======
+        oauthtoken ='AAAFgV6GyZBEYBANsGu8mS3bQzvGyrK8yBS8XwHqA8sOKStZAkavMedI9ZCJ3RO4WThWE3QYPRNOZB7BFvLc2G9unDKtUdciesBcGOfnhu2qHeDsTlcec'
+        graph = Koala::Facebook::API.new(oauthtoken)
+#                graph = Koala::Facebook::API.new(facebook_cookies["access_token"])
+>>>>>>> 771abdaf0a00c50164686f97ef2a9fc046d9c039
       
       if graph
         graph.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
