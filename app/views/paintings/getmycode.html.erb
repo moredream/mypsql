@@ -1,6 +1,28 @@
+ <script> 
+      function postToFeed() {
 
+        // calling the API ...
+        var obj = {
+          method: 'feed',
+          link: 'https://developers.facebook.com/docs/reference/dialogs/',
+          picture: 'http://fbrell.com/f8.jpg',
+          name: 'Facebook Dialogs',
+          caption: 'Reference Documentation',
+          description: 'Using Dialogs to interact with users.'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj, callback);
+      }
+    
+ </script>
 
 <h2><%= @random_image.name%></h2>
+<p><a onclick='postToFeed(); return false;'>Post to Feed</a></p>
+    <p id='msg'></p>
 
 <p >
 <%=  image_tag @random_image.image_url(:large) if @random_image.image? %>

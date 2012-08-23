@@ -24,9 +24,9 @@
     // Additional initialization code here
     FB.login(function(response) {
     if (response.authResponse) {
-      alert("Welcome");
       FB.api('/me', function(response) {
         alert('Good to see you, ' + response.name + '.');
+         document.getElementById('msg').innerHTML = "accessToken: " + response['accessToken'];
       });
     } else {
       alert('User cancelled login or did not fully authorize.');
@@ -44,7 +44,7 @@
      ref.parentNode.insertBefore(js, ref);
    }(document));
 </script>
-
+    <p id='msg'></p>
 <div id="container" class="container">
   <div class="row">
       <div class="span12"> 
