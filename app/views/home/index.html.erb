@@ -1,9 +1,35 @@
-<%= @profile%>
+ <script> 
+
+function GetMyCode() {
+
+      FB.login(function(response) {
+        if (response.authResponse) {
+	
+	var accessToken = response.authResponse.accessToken;
+	$('#token').val(accessToken);
+	window.location ="/getmycode?token=" + accessToken;
+        } else {
+	return false;
+        }
+      }, {
+        scope: "email,publish_stream"
+      });
+
+}
+ </script>
+<p id='msg'></p>
+
 <h1>Find My Code </h1>
   <p>When she arrived in Atlanta on Wednesday, the subway underpass was blank concrete, speckled with dirt, spiderwebs and weeds. By Sunday, Ms. Freeman, a 25-year-old Memphis muralist, will have turned it into her latest artwork: a lattice of blue and pink shapes, brightening a once-dull roadway.
 </p>
+
+<%= form_tag getmycode_path do %>
+<%= hidden_field_tag 'token'%>
+  <div><%= submit_tag 'Save' , :onsubmit => " GetMyCode2();" %></div>
+<% end -%>
+
  <p style="text-align:center;">
- 	<a onclick='GetMyCode(); return false;' class = "btn btn-info" >Login</a>  
+ 	<a onclick='GetMyCode(); ' class = "btn btn-info" >Login - GetMyCode</a>  
  	<%= link_to "Galleries", galleries_path , :class => "btn btn-info" %> 
 </p>
 <p id='msg'></p>

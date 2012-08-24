@@ -7,6 +7,7 @@ Mypsql::Application.routes.draw do
   resources :paintings do
    member do
      get 'publish'
+     #get 'getmycode'
    end
   end
   match 'getmycode', to: 'paintings#getmycode'

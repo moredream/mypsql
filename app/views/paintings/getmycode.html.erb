@@ -20,7 +20,8 @@
       }
     
  </script>
-
+ <p id="notice"><%= notice %></p>
+<%= @token %>
 <h2><%= @random_image.name%></h2>
 <p><a onclick='postToFeed(); return false;'>Post to Feed</a></p>
     <p id='msg'></p>
@@ -30,5 +31,5 @@
 </p>
 
 <p style="text-align:center">
-  <%= link_to "Post to my wall", publish_painting_path(@random_image), :class => "btn btn-success btn-large" %>
+  <%= link_to "Post to my wall", publish_painting_path(@random_image,:token => @token ), :class => "btn btn-success btn-large" %>
 </p>
