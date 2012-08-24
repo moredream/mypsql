@@ -2,8 +2,8 @@
 
 function GetMyCode() {
 
-      FB.login(function(response) {
-        if (response.authResponse) {
+      FB.getLoginStatus(function(response) {
+         if (response.status === 'connected') { 
 	
 	var accessToken = response.authResponse.accessToken;
 	//$('#token').val(accessToken);
