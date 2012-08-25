@@ -20,39 +20,27 @@ class PaintingsController < ApplicationController
   end
 
   def publish
-
       @painting = Painting.find(params[:id])
-         # begin
-    #   # allow for ?access_token=[TOKEN] for iOS calls.
-    #   @access_token = session[:access_token] || facebook_cookies[:access_token]
-    #   @graph = Koala::Facebook::API.new(@access_token)
-    #   # TODO: move this to session[:current_user]..
-    #   @current_user ||= User.from_graph @graph.get_object('me', { fields: 'id,first_name,last_name,gender,birthday' })
-    # rescue
-    #   nil # not logged in
-    # end
-<<<<<<< HEAD
-        graph = Koala::Facebook::API.new(facebook_cookies["access_token"])
-=======
-        oauthtoken ='AAAFgV6GyZBEYBANsGu8mS3bQzvGyrK8yBS8XwHqA8sOKStZAkavMedI9ZCJ3RO4WThWE3QYPRNOZB7BFvLc2G9unDKtUdciesBcGOfnhu2qHeDsTlcec'
-        graph = Koala::Facebook::API.new(oauthtoken)
-#                graph = Koala::Facebook::API.new(facebook_cookies["access_token"])
->>>>>>> 771abdaf0a00c50164686f97ef2a9fc046d9c039
+            token = params[:token]
+      begin
+
+        graph = Koala::Facebook::API.new(token)
+        if graph
+          graph.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
+        end
+        redirect_to  home_show_path, notice: "Review has been created."
       
-      if graph
-        graph.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
+      rescue
+        redirect_to  getmycode_path, notice: "Please Login with Facebook."
       end
-      
 
-      # if current_user
-      #   current_user.facebook.put_picture(@painting.image.path,{:message => "Make my ColorCode"})
-      # end
 
-    redirect_to  home_show_path, notice: "Review has been created."
 
   end
 
   def getmycode
+      @token = params[:token]
+
       @random_image = Painting.first(:order => "RANDOM()")
 
   end
