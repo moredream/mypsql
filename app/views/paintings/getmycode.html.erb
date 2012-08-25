@@ -13,22 +13,23 @@
         };
 
         function callback(response) {
-          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+       //   document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
         }
 
         FB.ui(obj, callback);
       }
     
  </script>
-
+ <p id="notice"><%= notice %></p>
 <h2><%= @random_image.name%></h2>
-<p><a onclick='postToFeed(); return false;'>Post to Feed</a></p>
-    <p id='msg'></p>
+
+<p id='msg'></p>
 
 <p >
 <%=  image_tag @random_image.image_url(:large) if @random_image.image? %>
 </p>
 
 <p style="text-align:center">
-  <%= link_to "Post to my wall", publish_painting_path(@random_image), :class => "btn btn-success btn-large" %>
+  <%= link_to "Post to my wall", publish_painting_path(@random_image,:token => @token ), :class => "btn btn-success btn-large" %>
 </p>
+<p><a onclick='postToFeed(); return false;' class ="btn btn-success btn-large" >Post to Feed</a></p>
